@@ -1,0 +1,12 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+  <h1 class="mb-4">{{ course.name }}</h1>
+  <p class="lead">{{ course.description }}</p>
+  <h2>Lessons</h2>
+  <div class="list-group">
+    {% for lesson in lessons %}
+      <a href="{% url 'course:lesson_detail' lesson.id %}" class="list-group-item list-group-item-action">{{ lesson.name }}</a>
+    {% endfor %}
+  </div>
+{% endblock %}

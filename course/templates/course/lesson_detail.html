@@ -1,0 +1,16 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+  <h1 class="mb-4">{{ lesson.name }}</h1>
+  <p class="lead">{{ lesson.description }}</p>
+  <form method="post" action="{% url 'course:mark_attendance' lesson.id %}" class="mb-4">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="code">Enter Attendance Code:</label>
+      <input type="text" id="code" name="code" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Mark Attendance</button>
+  </form>
+  <p>OR</p>
+  <a href="{% url 'course:mark_manual_attendance' lesson.id %}" class="btn btn-secondary">Mark Manual Attendance</a>
+{% endblock %}
